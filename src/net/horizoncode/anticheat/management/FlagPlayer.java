@@ -52,6 +52,7 @@ public class FlagPlayer {
 			if (all.isOp() || all.hasPermission("anticheat.notify")) {
 				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
 				all.sendMessage("§8> §7detected for: " + c.getName());
+				all.sendMessage("§8> §7" + message);
 			}
 		}
 	}
