@@ -1,5 +1,8 @@
 package net.horizoncode.anticheat.management;
 
+import net.horizoncode.anticheat.checkbase.Check;
+
+import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -7,6 +10,8 @@ public class FlagPlayer {
 
 	private Player player;
 	private String name;
+	private long lastFlag;
+	private int timebetweenflags = 1;
 
 	public FlagPlayer(Player p) {
 		setPlayer(p);
@@ -20,7 +25,7 @@ public class FlagPlayer {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public Player getPlayer() {
 		return player;
 	}
@@ -30,7 +35,7 @@ public class FlagPlayer {
 	}
 
 	public boolean canBypass() {
-		if(player.isFlying())
+		if (player.isFlying())
 			return true;
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return true;
@@ -39,4 +44,27 @@ public class FlagPlayer {
 		return false;
 	}
 
+	public void flag(Check c, String message) {
+		if (!(lastFlag + timebetweenflags * 1000L < System.currentTimeMillis()))
+			return;
+		lastFlag = System.currentTimeMillis();
+		for (Player all : Bukkit.getOnlinePlayers()) {
+			if (all.isOp() || all.hasPermission("anticheat.notify")) {
+				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
+				all.sendMessage("§8> §7detected for: " + c.getName());
+			}
+		}
+	}
+
+	public void flag(Check c) {
+		if (!(lastFlag + timebetweenflags * 1000L < System.currentTimeMillis()))
+			return;
+		lastFlag = System.currentTimeMillis();
+		for (Player all : Bukkit.getOnlinePlayers()) {
+			if (all.isOp() || all.hasPermission("anticheat.notify")) {
+				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
+				all.sendMessage("§8> §7detected for: " + c.getName());
+			}
+		}
+	}
 }
