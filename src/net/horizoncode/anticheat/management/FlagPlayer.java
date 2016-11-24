@@ -39,7 +39,7 @@ public class FlagPlayer {
 			return true;
 		if (player.getGameMode() == GameMode.CREATIVE || player.getGameMode() == GameMode.SPECTATOR)
 			return true;
-		if (player.hasPermission("xenon.bypass"))
+		if (player.hasPermission("anticheat.bypass"))
 			return true;
 		return false;
 	}
