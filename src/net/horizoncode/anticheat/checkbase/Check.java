@@ -3,6 +3,7 @@ package net.horizoncode.anticheat.checkbase;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.event.Listener;
 
 public class Check implements Listener {
@@ -32,6 +33,10 @@ public class Check implements Listener {
 	}
 	
 	public void onInteract(FlagPlayer p){}
+	
+	public void onDamage(FlagPlayer fp, Entity damagedEntity){}
+	
+	public void onTeleport(FlagPlayer fp, Location from, Location to){}
 	
 	public void onMove(FlagPlayer p, Location from, Location to){}
 	
