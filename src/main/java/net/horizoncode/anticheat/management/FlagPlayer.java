@@ -52,9 +52,9 @@ public class FlagPlayer {
     for (Player all : Bukkit.getOnlinePlayers()) {
       if (all.isOp() || all.hasPermission("anticheat.notify")) {
         all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
-        all.sendMessage(ChatColor.translateAlternateColorCodes('&', "�8> �7detected for: " + c.getName()));
+        all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7detected for: " + c.getName()));
         if (message != null)
-          all.sendMessage(ChatColor.translateAlternateColorCodes('&', "�8> �7" + message));
+          all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7" + message));
       }
     }
   }
