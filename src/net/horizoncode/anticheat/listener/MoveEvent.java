@@ -9,14 +9,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
 
 public class MoveEvent implements Listener {
-	
-	@EventHandler
-	public void onMove(PlayerMoveEvent e) {
-		for (Check c : AntiCheat.getInstance().checkManager.checks) {
-			FlagPlayer fp = AntiCheat.getInstance().get(e.getPlayer());
-			if (fp != null) {
-				c.onMove(fp, e.getFrom(), e.getTo());
-			}
-		}
-	}
+
+  @EventHandler
+  public void onMove(PlayerMoveEvent e) {
+    for (Check c : AntiCheat.getInstance().checkManager.checks) {
+      FlagPlayer fp = AntiCheat.getInstance().get(e.getPlayer());
+      if (fp != null) {
+        c.onMove(fp, e.getFrom(), e.getTo());
+      }
+    }
+  }
 }

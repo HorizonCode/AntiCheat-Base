@@ -13,61 +13,61 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class CheckManager {
 
-	public Vector<Check> checks;
-	public Plugin pl;
-	
-	public CheckManager(Plugin p) {
-		pl = p;
-		checks = new Vector<Check>();
-		registerCheck(new ExampleCheck());
-		
-		new BukkitRunnable() {
+  public Vector<Check> checks;
+  public Plugin pl;
 
-			@Override
-			public void run() {
+  public CheckManager(Plugin p) {
+    pl = p;
+    checks = new Vector<Check>();
+    registerCheck(new ExampleCheck());
 
-				for (Check c : checks) {
-					for (Player p : Bukkit.getOnlinePlayers()) {
-						FlagPlayer fp = AntiCheat.getInstance().get(p);
-						if (fp != null) {
-							c.onUpdate(fp);
-						}
-					}
-				}
-			}
-		}.runTaskTimerAsynchronously(p, 1, 1);
-		
-		new BukkitRunnable() {
+    new BukkitRunnable() {
 
-			@Override
-			public void run() {
+      @Override
+      public void run() {
 
-				for (Check c : checks) {
-					for (Player p : Bukkit.getOnlinePlayers()) {
-						FlagPlayer fp = AntiCheat.getInstance().get(p);
-						if (fp != null) {
-							c.onUpdate1(fp);
-						}
-					}
-				}
-			}
-		}.runTaskTimerAsynchronously(p, 20, 20);
-	}
+        for (Check c : checks) {
+          for (Player p : Bukkit.getOnlinePlayers()) {
+            FlagPlayer fp = AntiCheat.getInstance().get(p);
+            if (fp != null) {
+              c.onUpdate(fp);
+            }
+          }
+        }
+      }
+    }.runTaskTimerAsynchronously(p, 1, 1);
 
-	public void registerCheck(Check c) {
-		if (!checks.contains(c)) {
-			checks.add(c);
-			pl.getServer().getPluginManager().registerEvents(c, pl);
-			AntiCheat.getInstance().logger.log(c.getName() + " successfully registered!");
-		}
-	}
+    new BukkitRunnable() {
 
-	public Check getCheckbyClass(Class<?> c) {
-		for (Check check : checks) {
-			if (check.getClass() == c) {
-				return check;
-			}
-		}
-		return null;
-	}
+      @Override
+      public void run() {
+
+        for (Check c : checks) {
+          for (Player p : Bukkit.getOnlinePlayers()) {
+            FlagPlayer fp = AntiCheat.getInstance().get(p);
+            if (fp != null) {
+              c.onUpdate1(fp);
+            }
+          }
+        }
+      }
+    }.runTaskTimerAsynchronously(p, 20, 20);
+  }
+
+  public void registerCheck(Check c) {
+    if (!checks.contains(c)) {
+      checks.add(c);
+      pl.getServer().getPluginManager().registerEvents(c, pl);
+      AntiCheat.getInstance().logger.log(c.getName() + " successfully registered!");
+    }
+  }
+
+  public Check getCheckbyClass(Class<?> c) {
+    for (Check check : checks) {
+      if (check.getClass() == c) {
+        return check;
+      }
+    }
+    return null;
+  }
 }

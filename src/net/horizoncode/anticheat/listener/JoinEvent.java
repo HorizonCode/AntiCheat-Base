@@ -8,9 +8,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class JoinEvent implements Listener {
-	
-	@EventHandler
-	public void onJoin(PlayerJoinEvent e){
-	AntiCheat.getInstance().playerlist.add(new FlagPlayer(e.getPlayer()));
-	}
+
+  @EventHandler
+  public void onJoin(PlayerJoinEvent e) {
+    AntiCheat.getInstance().playerlist.add(new FlagPlayer(e.getPlayer()));
+  }
 }

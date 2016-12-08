@@ -9,39 +9,39 @@ import org.bukkit.event.player.PlayerEvent;
 
 public class PlayerViolationEvent extends PlayerEvent implements Cancellable {
 
-	private static final HandlerList handlers = new HandlerList();
-	private String flagname;
-	private boolean cancelled;
-	private String message;
-	
-	public PlayerViolationEvent(String name, Check flag, String Message) {
-		super(Bukkit.getPlayerExact(name));
-		this.flagname = flag.getName();
-		this.message = Message;
-	}
+  private static final HandlerList handlers = new HandlerList();
+  private String flagname;
+  private boolean cancelled;
+  private String message;
 
-	@Override
-	public HandlerList getHandlers() {
-		return handlers;
-	}
+  public PlayerViolationEvent(String name, Check flag, String Message) {
+    super(Bukkit.getPlayerExact(name));
+    this.flagname = flag.getName();
+    this.message = Message;
+  }
 
-	public static HandlerList getHandlerList() {
-		return handlers;
-	}
+  @Override
+  public HandlerList getHandlers() {
+    return handlers;
+  }
 
-	public boolean isCancelled() {
-		return this.cancelled;
-	}
+  public static HandlerList getHandlerList() {
+    return handlers;
+  }
 
-	public void setCancelled(boolean arg0) {
-		this.cancelled = arg0;
-	}
+  public boolean isCancelled() {
+    return this.cancelled;
+  }
 
-	public String getFlagName() {
-		return this.flagname;
-	}
+  public void setCancelled(boolean arg0) {
+    this.cancelled = arg0;
+  }
 
-	public String getMessage() {
-		return message;
-	}
+  public String getFlagName() {
+    return this.flagname;
+  }
+
+  public String getMessage() {
+    return message;
+  }
 }
