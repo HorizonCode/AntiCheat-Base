@@ -1,6 +1,6 @@
 package net.horizoncode.anticheat.listener;
 
-import net.horizoncode.anticheat.AntiCheat;
+import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
 import org.bukkit.event.EventHandler;
@@ -11,9 +11,9 @@ public class QuitEvent implements Listener {
 
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e) {
-		FlagPlayer fp = AntiCheat.getInstance().get(e.getPlayer());
+		FlagPlayer fp = AntiCheatAPI.getInstance().get(e.getPlayer());
 		if (fp != null) {
-			AntiCheat.getInstance().playerlist.remove(fp);
+			AntiCheatAPI.getInstance().playerlist.remove(fp);
 		}
 	}
 

@@ -1,6 +1,6 @@
 package net.horizoncode.anticheat.listener;
 
-import net.horizoncode.anticheat.AntiCheat;
+import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.checkbase.Check;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
@@ -17,8 +17,8 @@ public class TeleportEvent implements Listener {
 		Player p = e.getPlayer();
 		Location from = e.getFrom();
 		Location to = e.getTo();
-		FlagPlayer fp = AntiCheat.getInstance().get(p);
-		for (Check c : AntiCheat.getInstance().checkManager.checks) {
+		FlagPlayer fp = AntiCheatAPI.getInstance().get(p);
+		for (Check c : AntiCheatAPI.getInstance().getCheckManager().getChecks()) {
 			c.onTeleport(fp, from, to);
 		}
 	}

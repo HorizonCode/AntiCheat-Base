@@ -1,6 +1,6 @@
 package net.horizoncode.anticheat.listener;
 
-import net.horizoncode.anticheat.AntiCheat;
+import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
 import org.bukkit.event.EventHandler;
@@ -11,6 +11,6 @@ public class JoinEvent implements Listener {
 	
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e){
-	AntiCheat.getInstance().playerlist.add(new FlagPlayer(e.getPlayer()));
+	AntiCheatAPI.getInstance().playerlist.add(new FlagPlayer(e.getPlayer()));
 	}
 }

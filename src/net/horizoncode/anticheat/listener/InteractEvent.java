@@ -1,6 +1,6 @@
 package net.horizoncode.anticheat.listener;
 
-import net.horizoncode.anticheat.AntiCheat;
+import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.checkbase.Check;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
@@ -12,8 +12,8 @@ public class InteractEvent implements Listener {
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEvent e) {
-		for (Check c : AntiCheat.getInstance().checkManager.checks) {
-			FlagPlayer fp = AntiCheat.getInstance().get(e.getPlayer());
+		for (Check c : AntiCheatAPI.getInstance().getCheckManager().getChecks()) {
+			FlagPlayer fp = AntiCheatAPI.getInstance().get(e.getPlayer());
 			if (fp != null) {
 				c.onInteract(fp);
 			}

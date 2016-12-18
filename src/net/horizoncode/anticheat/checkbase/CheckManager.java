@@ -2,8 +2,7 @@ package net.horizoncode.anticheat.checkbase;
 
 import java.util.Vector;
 
-import net.horizoncode.anticheat.AntiCheat;
-import net.horizoncode.anticheat.checks.ExampleCheck;
+import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
 import org.bukkit.Bukkit;
@@ -13,22 +12,19 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class CheckManager {
 
-	public Vector<Check> checks;
-	public Plugin pl;
-	
+	private static Vector<Check> checks = new Vector<Check>();
+	private static Plugin pl;
+
 	public CheckManager(Plugin p) {
 		pl = p;
-		checks = new Vector<Check>();
-		registerCheck(new ExampleCheck());
-		
 		new BukkitRunnable() {
-
+			
 			@Override
 			public void run() {
 
 				for (Check c : checks) {
 					for (Player p : Bukkit.getOnlinePlayers()) {
-						FlagPlayer fp = AntiCheat.getInstance().get(p);
+						FlagPlayer fp = AntiCheatAPI.getInstance().get(p);
 						if (fp != null) {
 							c.onUpdate(fp);
 						}
@@ -44,7 +40,7 @@ public class CheckManager {
 
 				for (Check c : checks) {
 					for (Player p : Bukkit.getOnlinePlayers()) {
-						FlagPlayer fp = AntiCheat.getInstance().get(p);
+						FlagPlayer fp = AntiCheatAPI.getInstance().get(p);
 						if (fp != null) {
 							c.onUpdate1(fp);
 						}
@@ -54,11 +50,11 @@ public class CheckManager {
 		}.runTaskTimerAsynchronously(p, 20, 20);
 	}
 
-	public void registerCheck(Check c) {
+	public static void registerCheck(Check c) {
 		if (!checks.contains(c)) {
 			checks.add(c);
 			pl.getServer().getPluginManager().registerEvents(c, pl);
-			AntiCheat.getInstance().logger.log(c.getName() + " successfully registered!");
+			AntiCheatAPI.getInstance().getACLogger().log(c.getName() + " successfully registered!");
 		}
 	}
 
@@ -69,5 +65,9 @@ public class CheckManager {
 			}
 		}
 		return null;
+	}
+	
+	public Vector<Check> getChecks(){
+		return checks;
 	}
 }

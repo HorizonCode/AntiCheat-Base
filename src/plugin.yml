@@ -1,0 +1,4 @@
+name: AntiCheatAPI
+main: net.horizoncode.anticheat.AntiCheatAPI
+description: an AntiCheatAPI
+version: 88
