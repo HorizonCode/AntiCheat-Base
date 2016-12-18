@@ -1,6 +1,9 @@
 # AntiCheatAPI
 If you would like to start an selfmade AntiCheat, this is the API for you!
 
+##Download
+https://github.com/HorizonCode/AntiCheatAPI/releases
+
 ##How to use the API?
 ```java
 public class AntiCheatTest extends JavaPlugin {
