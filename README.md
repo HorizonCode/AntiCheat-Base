@@ -6,7 +6,7 @@ https://github.com/HorizonCode/AntiCheatAPI/releases
 
 #Important: plugin.yml
 ```text
-name: Example pluginyml
+name: ExamplePluginYML
 main: net.example.AntiCheatTest
 description: example
 version: 1.0
@@ -22,7 +22,7 @@ public AntiCheatAPI ac;
  
  @Override	
  public void onEnable() {		
-  ac = AntiCheatAPI.getNewAPI("Xeno");		
+  ac = AntiCheatAPI.getNewAPI("YourAntiCheatName");		
   CheckManager.registerCheck(new Sprint());	
 }	
   public AntiCheatAPI getAntiCheat() {		
