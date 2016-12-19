@@ -1,5 +1,6 @@
 package net.horizoncode.anticheat.management;
 
+import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.checkbase.Check;
 
 import org.bukkit.Bukkit;
@@ -42,6 +43,22 @@ public class FlagPlayer {
 		if (player.hasPermission("anticheat.bypass"))
 			return true;
 		return false;
+	}
+	
+	public void kick(Check c, String message) {
+		lastFlag = System.currentTimeMillis();
+		for (Player all : Bukkit.getOnlinePlayers()) {
+			if (all.isOp() || all.hasPermission("anticheat.notify")) {
+				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
+				all.sendMessage("§8> §7kicked for: " + c.getName());
+				all.sendMessage("§8> §7" + message);
+			}
+		}
+		Bukkit.getConsoleSender().sendMessage("§8> §7The Player " + player.getName() + " §7was");
+		Bukkit.getConsoleSender().sendMessage("§8> §7kicked for: " + c.getName());
+		Bukkit.getConsoleSender().sendMessage("§8> §7" + message);	
+		
+		getPlayer().kickPlayer(AntiCheatAPI.getANTICHEAT_NAME() + "\n" + message);
 	}
 
 	public void flag(Check c, String message) {
