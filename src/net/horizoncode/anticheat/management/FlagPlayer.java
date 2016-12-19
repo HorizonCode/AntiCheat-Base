@@ -4,6 +4,7 @@ import net.horizoncode.anticheat.AntiCheatAPI;
 import net.horizoncode.anticheat.checkbase.Check;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
@@ -49,14 +50,14 @@ public class FlagPlayer {
 		lastFlag = System.currentTimeMillis();
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			if (all.isOp() || all.hasPermission("anticheat.notify")) {
-				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
-				all.sendMessage("§8> §7kicked for: " + c.getName());
-				all.sendMessage("§8> §7" + message);
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7kicked for: " + c.getName()));
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7" + message));
 			}
 		}
-		Bukkit.getConsoleSender().sendMessage("§8> §7The Player " + player.getName() + " §7was");
-		Bukkit.getConsoleSender().sendMessage("§8> §7kicked for: " + c.getName());
-		Bukkit.getConsoleSender().sendMessage("§8> §7" + message);	
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7kicked for: " + c.getName()));
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7" + message));	
 		
 		getPlayer().kickPlayer(AntiCheatAPI.getANTICHEAT_NAME() + "\n" + message);
 	}
@@ -67,14 +68,14 @@ public class FlagPlayer {
 		lastFlag = System.currentTimeMillis();
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			if (all.isOp() || all.hasPermission("anticheat.notify")) {
-				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
-				all.sendMessage("§8> §7detected for: " + c.getName());
-				all.sendMessage("§8> §7" + message);
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7detected for: " + c.getName()));
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7" + message));
 			}
 		}
-		Bukkit.getConsoleSender().sendMessage("§8> §7The Player " + player.getName() + " §7was");
-		Bukkit.getConsoleSender().sendMessage("§8> §7detected for: " + c.getName());
-		Bukkit.getConsoleSender().sendMessage("§8> §7" + message);	
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7detected for: " + c.getName()));
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7" + message));	
 	}
 
 	public void flag(Check c) {
@@ -83,11 +84,11 @@ public class FlagPlayer {
 		lastFlag = System.currentTimeMillis();
 		for (Player all : Bukkit.getOnlinePlayers()) {
 			if (all.isOp() || all.hasPermission("anticheat.notify")) {
-				all.sendMessage("§8> §7The Player " + player.getName() + " §7was");
+				all.sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
 				all.sendMessage("§8> §7detected for: " + c.getName());
 			}
 		}
-		Bukkit.getConsoleSender().sendMessage("§8> §7The Player " + player.getName() + " §7was");
-		Bukkit.getConsoleSender().sendMessage("§8> §7detected for: " + c.getName());
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7The Player " + player.getName() + " &7was"));
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&8> &7detected for: " + c.getName()));
 	}
 }

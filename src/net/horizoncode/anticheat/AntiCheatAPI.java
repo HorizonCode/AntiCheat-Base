@@ -13,6 +13,7 @@ import net.horizoncode.anticheat.logging.Logger;
 import net.horizoncode.anticheat.management.FlagPlayer;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,14 +31,14 @@ public class AntiCheatAPI extends JavaPlugin {
 		logger = new Logger(instance);
 		registerEvents();
 		checkManager = new CheckManager(instance);
-		logger.log(getANTICHEAT_NAME() + " is now watching");
+		logger.log(ChatColor.translateAlternateColorCodes('&', "&a" + getANTICHEAT_NAME() + " is now watching"));
 		return AntiCheatAPI.instance;
 	}
 
 	@Override
 	public void onEnable() {
 		instance = this;
-		System.out.println("AntiCheatAPI loaded");
+		System.out.println(ChatColor.translateAlternateColorCodes('&', "&aAntiCheatAPI loaded"));
 	}
 
 	private static void registerEvents() {
