@@ -55,6 +55,9 @@ public class FlagPlayer {
 				all.sendMessage("§8> §7" + message);
 			}
 		}
+		Bukkit.getConsoleSender().sendMessage("§8> §7The Player " + player.getName() + " §7was");
+		Bukkit.getConsoleSender().sendMessage("§8> §7detected for: " + c.getName());
+		Bukkit.getConsoleSender().sendMessage("§8> §7" + message);	
 	}
 
 	public void flag(Check c) {
@@ -67,5 +70,7 @@ public class FlagPlayer {
 				all.sendMessage("§8> §7detected for: " + c.getName());
 			}
 		}
+		Bukkit.getConsoleSender().sendMessage("§8> §7The Player " + player.getName() + " §7was");
+		Bukkit.getConsoleSender().sendMessage("§8> §7detected for: " + c.getName());
 	}
 }
